@@ -8,14 +8,30 @@ import { Component } from '@angular/core';
 export class AppComponent {
   name: string = 'leiber';
   age: number = 21;
-  img = 'https://source.unsplash.com/random';
+  img: string = 'https://source.unsplash.com/random';
+
   // property-binding
-  btnDisable: boolean = false;
+  btnState: boolean = true;
   nameValue: string = "Insertar info";
 
   person = {
     name: "Leiber",
-    age: 21,
+    age: 99,
     img: 'https://source.unsplash.com/random'
   }
+
+  // métodos
+  toggleButton() {
+    this.btnState = !this.btnState;
+  };
+
+  increaseAge() {
+    if(this.person.age < 100)
+      this.person.age += 1;
+  };
+
+  decreaseAge() {
+    if(this.person.age > 0)
+      this.person.age -= 1;
+  };
 }
