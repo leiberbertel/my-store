@@ -34,4 +34,15 @@ export class AppComponent {
     if(this.person.age > 0)
       this.person.age -= 1;
   };
+
+  onScroll(event: Event) {
+    const element = event.target as HTMLElement;
+    console.log(element.scrollTo);
+  }
+
+  changeName(event: Event) {
+    const element = event.target as HTMLInputElement;
+    this.person.name = element.value;
+  }
+
 }
