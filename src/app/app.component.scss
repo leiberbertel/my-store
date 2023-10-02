@@ -4,3 +4,10 @@
   overflow: auto;
   background-color: red;
 }
+
+
+.products--grid {
+  display: grid;
+  grid-template-columns: repeat(5, fr);
+  grid-gap: 15px;
+}

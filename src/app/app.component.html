@@ -1,3 +1,95 @@
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name">
+<div [ngSwitch]="person.name">
+
+  <p *ngSwitchCase=" 'nicolas' ">
+    La persona es nicolas
+  </p>
+
+  <p *ngSwitchCase=" 'abraham' ">
+    La persona es abraham
+  </p>
+
+  <p *ngSwitchCase=" 'ricardo' ">
+    La persona es ricardo
+  </p>
+  <p *ngSwitchDefault>No hace match</p>
+</div>
+
+<!-- <p *ngIf="person.name === 'nicolas'">
+  La persona es nicolas
+</p>
+
+<p *ngIf="person.name === 'abraham'">
+  La persona es abraham
+</p>
+
+<p *ngIf="person.name === 'ricardo'">
+  La persona es ricardo
+</p> -->
+
+<hr>
+
+<h1>*ngFor en arrays</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img width="250" [src]="product.image" alt="imagen">
+    <h2>${{ product.price }} COP</h2>
+    <p>{{ product.name }}</p>
+  </div>
+</div>
+
+<hr>
+
+<h1>*ngFor: ciclos</h1>
+<span>Lista de nombres:</span><br>
+<input required type="text" [(ngModel)]="newName">
+<button (click)="addName()">Add name</button>
+<ul>
+  <li *ngIf="names.length === 0">No hay nombres</li>
+  <li *ngFor="let name of names; index as i">
+    {{ i }} - {{ name }}
+    <button (click)="deleteName(i)">Delete</button>
+    <input type="text" [value]="newName">
+    <button (click)="addName()">Add name</button>
+  </li>
+</ul>
+
+
+<hr>
+
+<h1>*ngIf: condicionales</h1>
+<input required type="text" [(ngModel)]="person.name">
+<p *ngIf="person.name === 'Leiber'">Hola, Leiber</p> <!-- Si la condición se cumple va a mostrar el contenido -->
+<p *ngIf="person.name === 'Abraham' && person.age === 21; else myBlock">Hola, Abraham</p>
+<!-- Que pasa si queremos usar elses? usamos la tag ng-template -->
+<ng-template #myBlock>
+  <p>Bloque de else</p>
+</ng-template>
+
+<hr>
+
+<!-- Tambien se puede usar then (entonces) y else (sino) -->
+<input type="text" required [(ngModel)]="person.name">
+<P *ngIf="person.name == 'liz'; then thenMyBlock else otherElseMyBlock"></P>
+<ng-template #thenMyBlock>
+  <p>Hola liz</p>
+</ng-template>
+<ng-template #otherElseMyBlock>
+  <p>Ingresa la palabra liz</p>
+</ng-template>
+
+<hr>
+
+<h1>NgModel: combina la funcionalidad de detectar eventos y realizar cambios a las propiedades</h1>
+<p>Nombre {{ person.name }}</p>
+<input required type="text" #nameInput="ngModel" [(ngModel)]="person.name">
+<!-- Para poder usar ngModel debemos importar el paquete de Angular FormsModule -->
+<p>Valid: {{ nameInput.valid }}</p>
+<input required type="number" max="18" min="10" #ageInput="ngModel" [(ngModel)]="person.age">
+<p>Nombre {{ ageInput.valid }}</p>
+<hr>
+
 <h1>Eventos</h1>
 
 <button [disabled] ="btnState">Enviar</button>
